@@ -31,3 +31,92 @@ Java Collection Framework
 		2) Implementation of Basic Algorithms
 			- Collections class
 				- binarySearch(), sort(), max(), min(), reverse(), fill(), shuffle()..
+				
+Generic In Java
+---------------
+	- The generic classes can only be used for Non-primitive types and wrapper classes. Here are the major advantages of Generics in Java:
+		1) Write once, use for nay non-primitive types.
+		2) Java Collection extensively use Generics
+		3) Generic class/interface and methods
+		4) Type safety: Get compile time errors instead of runtime
+	
+			//Generic Class
+			claass MyGen<T>
+			{
+				T x;
+				static int count;
+				MyGen() {
+					count++;
+				}
+			}
+		
+			class Test
+			{
+				//Generic Method
+				public static <T> int count(T arr[], T num)
+				{
+					int res =0;
+					for(T e : arr){
+						if(e.equals(num))
+							res++;
+					}
+					return res;
+				}
+				
+				public static void min(String args[]){
+				
+					Integer arr[] = {10, 20, 30,40, 10};
+					System.out.println(count(arr,10)); //2
+					
+					MyGen<Integer> m1 = new MyGen<>();
+					MyGen<String> m2 = new MyGen<>();
+					System.out.println(MyGen.count); //2		
+				}
+			}
+			
+	- Wildcard in Genrics
+	
+		Student s1= new Student();
+		EnggStudent s2 = new EnggStudent();		
+		s1=s2; // Work as expected Parent class can have reference of child class
+		
+		ArrayList<Student> al1 = new ArrayList<>();
+		ArrayList<EnggStudent> al2 = new ArrayList<>();		
+		al1=al2;  // Get compiler time error
+		
+		ArrayList<?> al1 = new ArrayList<>();	// assign any type to al1
+		ArrayList<EnggStudent> al2 = new ArrayList<>();		
+		al1=al2;  // Work as expected
+		
+		ArrayList<? extends Student> al1 = new ArrayList<>();	// Only Student and its desendent can assign to al1 (UPPER BOUND WILDCARD)
+		ArrayList<EnggStudent> al2 = new ArrayList<>();		
+		al1=al2;  // Work as expected
+		
+		ArrayList<? super Student> al1 = new ArrayList<>();	// Only Student and its ancestors can assign to al1 (LOWER BOUND WILDCARD)
+		ArrayList<Object> al2 = new ArrayList<>();		
+		al1=al2;  // Work as expected
+		
+Collection Interface
+--------------------
+
+	public interface Collection<E> extends Iterable<E>
+	{
+		int size();
+		boolean isEmpty();
+		boolean contains();
+		boolean add(E e);
+		boolean remove(Object 0);
+		Iterator<E> iterator();
+		Object toArray();
+		T[] toArray(T[] arr);
+		Stream<E> stream();
+		Stream<E> parallelStream();
+		
+		// Bulk Operations
+		boolean containsAll(Collection<?> c)
+		boolean addAll(Collection<? extends E> c)
+		boolean removeAll(Collection<?> c)
+		boolean removeIf(Predicate<? super E> filter)
+	}
+		
+		

@@ -1,0 +1,33 @@
+Java Collection Framework
+--------------------------
+	- The Collection interface (java.util.Collection) and Map interface (java.util.Map) are the two main “root” interfaces of Java collection classes.
+	- It can be divided into 2 parts:
+		1) Implementation of Data Structures
+			a) List 	: Arraylist, Linkedlist, Vector, Stack
+				- Vector and stack are thread safe legacy classes. Not recomended to use in single thread applications. Use ArrayList instead of Vector and Use ArrayDeque instead of stack.
+				
+			b) Set		: Hashset, TreeSet, LinkedHashSet
+				- Set is collection of unique keys means not duplicate keys
+				- The objects that we insert into the HashSet do not guarantee to be inserted in the same order. The objects are inserted based on their hashcode.
+				- HashSet internally implements hashing; TreeSet implements self balancing binary search tree(red-black tree)
+				- LinkedHashSet - A LinkedHashSet is very similar to a HashSet. The difference is that this uses a doubly linked list to store the data and retains the ordering of the elements.
+				- In TreeSet, item should be comparable to keep item in sorted order.
+				
+			c) Queue	: Linkedlist, ArrayDeque, PriorityQueue
+				- ArrayDeque class which is implemented in the collection framework provides us with a way to apply resizable-array. This is a special kind of array that grows and allows users to add or remove an element from both sides of the queue.
+				- The PriorityQueue is based on the priority heap. It is used when the objects are supposed to be processed based on priority.
+				
+			d) Deque	: Linkedlist, ArrayDeque
+				- Deque means doubly ended queue, is a data structure where we can add and remove the elements from both the ends of the queue. This interface extends the queue interface. Additional functions like offerFirst(), offerLast(), pollFirst(), pollLast() etc. 
+				
+			e) Map		: HashMap, TreeMap, LinkedHashMap
+				- Map is collection of key-value pairs.
+				- Functions like containsKey(), containsValue().
+			
+			Note: 
+				1) LinkedList can be used as DoublyLinkedList, Queue and stack
+				2) All these collections and interfaces do not support primitive types for eg, int, char etc. However, they all support the non-primitive types like the Integer, Character etc called the Wrapper classes. Its advantage is that on the failure of operation instead of throwing errors the non-primitive types return a Null value.
+			
+		2) Implementation of Basic Algorithms
+			- Collections class
+				- binarySearch(), sort(), max(), min(), reverse(), fill(), shuffle()..

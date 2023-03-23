@@ -113,10 +113,81 @@ Collection Interface
 		Stream<E> parallelStream();
 		
 		// Bulk Operations
+		// If source collection is modified, then bulk oprtions result is true otherwise false.
 		boolean containsAll(Collection<?> c)
 		boolean addAll(Collection<? extends E> c)
 		boolean removeAll(Collection<?> c)
+		boolean retainAll(Collection<?> c)
 		boolean removeIf(Predicate<? super E> filter)
 	}
+	
+List
+-----
+	- The List interface provides a way to store the ordered collection. 
+	- It is an ordered collection of objects in which duplicate values can be stored. 
+	- Since List preserves the insertion order, it allows positional access and insertion of elements.	
+	- Common Methods
+		- We have a common interface present in the List interface. The below methods can be called on LinkedList, Vectors or ArrayList.
+		- There are common implementations of below methods in the AbstractList class which is used by LinkedList and ArrayList.
+			1) get(int index)	
+				This method returns element at the specified index.
+			2) set(int index, E element)	
+				This method replaces element at given index with new element. This function returns the element which was just replaced by new element. Since it is a generic function, so "E" here is denotes the type of element in the List.
+			3) indexOf(element)			
+				This method returns the first occurrence of the given element or -1 if the element is not present in the list.
+			4) listIterator()				
+				List interface has an enhanced version of the iterator. The iterator in Collection interface allows us to traverse only in the forward direction, where as a List iterator is an ehnaced iterator and it allows us to traverse in both forward and backward directions.
+			5) listIterator(int index)	
+				This function returns an iterator pointing to the element at index "index".
+			6) remove(int index)	
+				This method removes an element from the specified index. It shifts subsequent elements(if any) to left and decreases their indexes by 1.
+			7) remove(element)	
+				This method is used to remove the first occurrence of the given element in the list.
+			8) lastIndexOf(Object)
+				The lastIndexOf() method of ArrayList returns the index of the last occurrence of the specified element in this list, or -1 if this list does not contain the element.
+			9) clear()
+				This method is simply used to clear an ArrayList by deleting all of its elements. It's return type is void and it doesn't return anything.
 		
+	ListIterator
+	-------------
+	- List interface has an enhanced version of the iterator. The iterator in Collection interface allows us to traverse only in the forward direction, where as a List iterator is an ehnaced iterator and it allows us to traverse in both forward and backward directions.
+		- It works only with Lists like ArrayList, Vector, LinkedLists.
+		- It is inherited from the Iterator interface. So, it includes all functionalities of the iterator interface.
+		- In addition to next(), hashNext() and remove(), it provides the below methods:
+			1) hasPrevious() - It is used to check if we have previous item for the item pointed by current iterator or not.
+			2) previous() - It returns the previous element of the list, and moves the iterator one position back.
+			3) add() - It is used to add an item while iterating through the List.
+			4) set() - replaces the element returned by either next() or previous() with the specified element
+			5) nextIndex() returns the index of the element that the next() method will return
+			6) previousIndex() - returns the index of the element that the previous() method will return
+			
+	ArrayList
+	---------
+	- Like dynamic arrays in other languages, ArrayLists in Java also uses normal arrays internally to implement dynamic resizing.
+	- In Java 1.8, it is claimed at different sources like StackOverflow and Wikipedia that Java pre-allocates space for 10 items and creates a new space of size 1.5 times instead of double when old space gets full.
+	- The major advantage of ArrayLists is that it has all advantages that come with arrays because it internally uses Arrays. The two major advantages of arrays are:
+		1) Cache Friendliness.
+		2) Random access of elements.
+	- The amortized time complexity of adding an element to the end of ArrayList(dynamic arrays) is O(1), however, the worst-case time complexity is still O(N). So, it is wiser to use Arrays over ArrayList if you know the number of elements you are going to store beforehand.
+	
+		// sort the ArrayList in ascending order
+        al.sort(Comparator.naturalOrder());
+
+        // sort the ArrayList in descending order
+        al.sort(Comparator.reverseOrder());
 		
+		// Collections.reverse method takes a list as a parameter and reverse the list
+        Collections.reverse(al);
+	
+		add(obj) --------> Amortized O(1)
+
+		size()    -------
+		isEmpty() -------  \____  Worst Case O(1)
+		get()------------  /
+		set() -----------
+
+		contains()  ----------------  
+		indexOf()   ----------------  \
+		lastIndexOf()  -------------    ------ Worst Case O(N)
+		remove() [both versions] ---  /
+		add(index, obj)  -----------

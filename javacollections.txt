@@ -191,3 +191,90 @@ List
 		lastIndexOf()  -------------    ------ Worst Case O(N)
 		remove() [both versions] ---  /
 		add(index, obj)  -----------
+		
+	LinkedList
+	----------
+	- This class is an implementation of the LinkedList data structure which is a linear data structure where every element is stored as a separate object with a data part and address part. The elements are linked using pointers and addresses called nodes. It is rarely used in a production scenario but it has its own advantages. Basically it can be used in two particular cases:
+		1) It can be used as an ArrayList when the list type operation is performed for eg, insertion, deletion, remove, etc. It implements all the functions of the List interface just like an ArrayList.
+		2) It can be also be used as an ArrayDeque when queue or dequeue type of operations are performed, thus implementing the Deque interface.
+	- Insert and delete operations in the LinkedList are less expensive even in the worst case due to the reference of the previous and next elements which is highly unlikely in the case of ArrayList and ArrayDeque which internally uses a resizable array.
+	- Methods common to both LinkedList and ArrayList
+
+		Method						Description
+		add(E e)					This method Appends the specified element to the end of this list.
+		add(int index, E element)	This method Inserts the specified element at the specified position in this list.
+		contains(Object o)			This method returns true if this list contains the specified element.
+		remove(int index)			This method removes the element at the specified position in this list.
+		remove(Object o)			This method removes the first occurrence of the specified element from this list, if it is present.
+		get(int index)				This method returns the element at the specified position in this list.
+		set(int index, E element)	This method replaces the element at the specified position in this list with the specified element.
+		indexOf(Object o)			This method returns the index of the first occurrence of the specified element in this list, or -1 if this list does not contain the element.	
+		lastIndexOf(Object o)		This method returns the index of the last occurrence of the specified element in this list, or -1 if this list does not contain the element.	
+		isEmpty()					This method is used to check if a list is empty or not.
+		
+	- Methods implementing Queue interface (FIFO)
+
+		Method		Description
+		add(E e)	This method Appends the specified element to the end of this list. Throws exception when element cannot be added to the list.
+		remove()	This method retrieves and removes the head (first element) of this list. Throws exception when the list is empty.
+		element()	This method retrieves, but does not remove, the head (first element) of this list. Throws exception when the list is empty.
+		offer(E e)	This method Adds the specified element as the tail (last element) of this list. Returns null when element cannot be added to the list .
+		poll()		This method retrieves and removes the head (first element) of this list. Returns null when the list is empty.
+		peek()		This method retrieves, but does not remove, the head (first element) of this list. Returns null when the list is empty.
+		
+	- Methods implementing DeQueue interface
+
+		Method			Description																											Unsuccesful Response
+		addFirst(E e)	This method Inserts the specified element at the beginning of this list.											Throws Exception
+		addLast(E e)	This method Appends the specified element to the end of this list.													Throws Exception
+		removeFirst()	This method removes and returns the first element from this list.													Throws Exception
+		removeLast()	This method removes and returns the last element from this list.													Throws Exception
+		getFirst()		This method returns the first element in this list.																	Throws Exception
+		getLast()		This method returns the last element in this list.																	Throws Exception
+		offerFirst(E e)	This method Inserts the specified element at the front of this list.												Returns Null
+		offerLast(E e)	This method Inserts the specified element at the end of this list.													Returns Null
+		pollFirst()		This method retrieves and removes the first element of this list, or returns null if this list is empty.			Returns Null
+		pollLast()		This method retrieves and removes the last element of this list, or returns null if this list is empty.				Returns Null
+		peekFirst()		This method retrieves, but does not remove, the first element of this list, or returns null if this list is empty.	Returns Null
+		peekLast()		This method retrieves, but does not remove, the last element of this list, or returns null if this list is empty.	Returns Null
+		
+	Stack
+	-----
+	- The class is based on the basic principle of last-in-first-out. 
+	- In addition to the basic push and pop operations, the class provides three more functions of empty, search, and peek.
+	- The class can also be said to extend Vector and treats the class as a stack with the five mentioned functions. The class can also be referred to as the subclass of Vector.
+	- Stack class in Java is a legacy class and inherits from Vector in Java. It is a thread-safe class and hence involves overhead when we do not need thread safety. It is recommended to use ArrayDeque for stack implementation as it is more efficient in a single-threaded environment.
+	- Stack Functions:
+		Method					Description	
+		push(Object element)	Pushes an element on the top of the stack.
+		pop()					Removes and returns the top element of the stack. An 'EmptyStackException' exception is thrown if we call pop() when the invoking stack is empty.	
+		peek()					Returns the element on the top of the stack, but does not remove it.
+		isEmpty()				It returns true if nothing is on the top of the stack. Else, returns false.	O(1)
+		size()					This method is used to get the size of the Stack or the number of elements present in the Stack.
+		
+		
+Queue
+------
+	- The Queue is used to insert elements at the end of the queue and removes from the beginning of the queue. It follows FIFO concept.
+	- The Java Queue supports all methods of Collection interface including insertion, deletion etc.
+	- LinkedList, ArrayBlockingQueue and PriorityQueue are the most frequently used implementations.
+	- If any null operation is performed on BlockingQueues, NullPointerException is thrown.
+	- The Queues which are available in java.util package are Unbounded Queues.
+	- The Queues which are available in java.util.concurrent package are the Bounded Queues.
+	- All Queues except the Deques supports insertion and removal at the tail and head of the queue respectively. The Deques support element insertion and removal at both ends.
+	- What should be preferred ArrayDeque or LinkedList?
+		- ArrayDeque is generally preferred because of its faster execution and cache-friendly nature.
+		- The time complexity for adding and removing items in a LinkedList is O(1) for every worst case. But for ArrayDeque it is amortized O(1). This means that for few operations which require internal resize of the array, the time of operation might increase to O(n) or linear time.
+		- Therefore, in general, ArrayDeque is faster but it doesn't guarantee a constant time complexity for every worst case. So unless and until a very individual or particular operation is concerned in real-time, ArrayDeque performs better than the LinkedList.
+		
+		Method			Description
+		peek()			This method is used to view the head of queue without removing it. It returns Null if the queue is empty.
+		offer(element)	This method is used to insert an element in the queue. This method is preferable to add() method since this method does not throws an exception when the capacity of the container is full since it returns false.
+		poll()			This method removes and returns the head of the queue. It returns null if the queue is empty.
+		element()		This method is similar to peek(). It throws NoSuchElementException when the queue is empty.
+		add(element)	This method is used to add elements at the tail of queue. More specifically, at the last of linked-list if it is used, or according to the priority in case of priority queue implementation.
+		remove()		This method removes and returns the head of the queue. It throws NoSuchElementException when the queue is empty.
+		
+	PriorityQueue
+	--------------
+

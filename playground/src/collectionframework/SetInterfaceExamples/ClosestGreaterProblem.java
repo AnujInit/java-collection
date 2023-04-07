@@ -26,8 +26,6 @@ public class ClosestGreaterProblem {
                 list.add(greater);
             treeSet.add(arr[i]);
         }
-
-
         System.out.println(list);
     }
     public static void main(String[] args) {

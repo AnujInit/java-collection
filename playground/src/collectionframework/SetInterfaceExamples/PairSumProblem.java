@@ -5,6 +5,7 @@ import java.util.Set;
 
 public class PairSumProblem {
     static boolean isPairSumExist(int[] arr, int sum){
+
         Set<Integer> set =  new HashSet<>();
 
         for (int i = 0; i < arr.length; i++) {

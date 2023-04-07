@@ -1,6 +1,7 @@
 package collectionframework.SetInterfaceExamples;
 
 import java.util.HashSet;
+import java.util.TreeSet;
 
 public class UniqueSubstringsProblem {
     public static int unique_substring(String str)

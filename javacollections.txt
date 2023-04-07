@@ -350,6 +350,22 @@ Set
 		- A LinkedHashSet is an ordered version of HashSet that maintains a doubly-linked List across all elements.
 		- Maintains insertion order.
 		- Keeping the insertion order in LinkedHashset have additional associated costs, both in terms of spending additional CPU cycles and needing more memory. If you do not need the insertion order maintained, it is recommended to use the lighter-weight HashSet instead.
+		
+	TreeSet
+	-------
+		Set <----- SortedSet <----- NavigableSet <---- TreeSet
+		
+		- The ordering of the elements is maintained by a set using their natural ordering. This must be consistent with equals if it is to correctly implement the Set interface.
+		- Functions present only in TreeSet:
+			Method							Description
+			lower(E e)						This method returns the greatest element in this set strictly less than the given element, or null if there is no such element.
+			higher(E e)						This method returns the least element in this set strictly greater than the given element, or null if there is no such element.
+			floor(E e)						This method returns the greatest element in this set less than or equal to the given element, or null if there is no such element.
+			ceiling(E e)					This method returns the least element in this set greater than or equal to the given element, or null if there is no such element.	
+			first()							This method will return first element in TreeSet if TreeSet is not null else it will throw NoSuchElementException.
+			last()							This method will return last element in TreeSet if TreeSet is not null else it will throw NoSuchElementException.
+			headSet(Object toElement)		This method will return elements of TreeSet which are less than the specified element.
+			tailSet(Object fromElement)		This method will return elements of TreeSet which are greater than or equal to the specified element.
 
 
 

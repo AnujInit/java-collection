@@ -275,6 +275,81 @@ Queue
 		add(element)	This method is used to add elements at the tail of queue. More specifically, at the last of linked-list if it is used, or according to the priority in case of priority queue implementation.
 		remove()		This method removes and returns the head of the queue. It throws NoSuchElementException when the queue is empty.
 		
-	PriorityQueue
+	Priority Queue
 	--------------
+		- A PriorityQueue is used when the objects are supposed to be processed based on the priority.
+		- The PriorityQueue is based on the priority heap. The elements of the priority queue are ordered according to the natural ordering, or by a Comparator provided at queue construction time, depending on which constructor is used.
+		- By default, it implements a min-Heap data structure.
+		- PriorityQueue doesn’t permit null.
+		
+			boolean add(E element): This method inserts the specified element into this priority queue.
+			public peek(): This method retrieves, but does not remove, the head of this queue, or returns null if this queue is empty.
+			public poll(): This method retrieves and removes the head of this queue, or returns null if this queue is empty.
+
+Deque
+-----
+	- The Deque interface present in java.util package is a subtype of the queue interface. 
+	- The Deque is related to the double-ended queue that supports addition or removal of elements from either end of the data structure. 
+	- It can either be used as a queue(first-in-first-out/FIFO) or as a stack(last-in-first-out/LIFO). 
+	
+		Method			Description																											Unsuccesful Response
+		addFirst(E e)	This method Inserts the specified element at the beginning of this list.											Throws Exception
+		addLast(E e)	This method Appends the specified element to the end of this list.													Throws Exception
+		removeFirst()	This method removes and returns the first element from this list.													Throws Exception
+		removeLast()	This method removes and returns the last element from this list.													Throws Exception
+		getFirst()		This method returns the first element in this list.																	Throws Exception
+		getLast()		This method returns the last element in this list.																	Throws Exception
+		offerFirst(E e)	This method Inserts the specified element at the front of this list.												Returns Null
+		offerLast(E e)	This method Inserts the specified element at the end of this list.													Returns Null
+		pollFirst()		This method retrieves and removes the first element of this list, or returns null if this list is empty.			Returns Null
+		pollLast()		This method retrieves and removes the last element of this list, or returns null if this list is empty.				Returns Null
+		peekFirst()		This method retrieves, but does not remove, the first element of this list, or returns null if this list is empty.	Returns Null
+		peekLast()		This method retrieves, but does not remove, the last element of this list, or returns null if this list is empty.	Returns Null
+		
+Set
+---
+	- An unordered collection of objects in which duplicate values cannot be stored.
+	- The Set interface is the sub-interface of Collection Interface. It is mainly implemented by 3 general-purpose classes namely:
+		1) TreeSet - Mainly implements Red-Black Tree which is a self-balancing binary tree. Objects are stored in sorted order.
+		2) HashSet - Implements Hashing for quick search, insertion and delete operations. The objects that we insert into the HashSet does not guarantee to be inserted in the same order.
+		3) LinkedHashSet - Derived class of HashSet. Facilitates access of elements in insertion order.
+		4) Abstract Classes like the provides a skeletal implementation of the Collection interface.
+		5) Interface like SortedSet provides operations related to subset such as finding all the items greater or smaller than a given key or finding a subset in a given range
+		6) Interface like NavigableSet provides navigable operations like floor, ceil, higher, lower etc.
+	- When to prefer TreeSet over HashSet?
+		1) TreeSet uses a Red-Black tree algorithm underneath to sort out the elements. When one needs to perform read/write operations frequently, then TreeSet is a good choice.
+		2) Sorted unique elements are required instead of unique elements. The sorted list given by TreeSet is always in ascending order.
+		3) To implement operations like ceil(), floor(), higher(), lower(), we need to use a TreeSet.
+		4) TreeSet can also implement a doubly ended queue and doubly ended priority queue for inserting or extracting max-min elements simultaneously. The TreeSet can perform all these operations in O(log n) time.
+		5) TreeSet has greater locality than HashSet. If two entries are nearby in the order, then TreeSet places them near each other in data structure and hence in memory, while HashSet spreads the entries all over memory regardless of the keys they are associated to.
+	- Set Operations
+		1) For Union of these two Sets: s1.addAll(s2)
+			- This is used to append all of the elements from the mentioned collection(s2) to the existing set(s1). The elements are added randomly without following any specific order.
+		2) For Intersection of these two Sets: s1.retainAll(s2)
+			- This is used to retain from this set(s1) all of its elements that are contained in the specified collection(s2).
+		3) For the Difference between these two sets: s1.removeAll(s2) 
+			- This is used to remove from this set(s1) all of its elements that are contained in the specified collection(s2).
+			
+	Hashset
+	-------
+		- This class permits the null element.
+		- The class also offers constant time performance for the basic operations like add, remove, contains and size assuming the hash function disperses the elements properly among the buckets
+		- HashSet also implements Searlizable and Cloneable interfaces.
+		
+			Method		Description
+			add()		Used to add the specified element if it is not present. If the element is already present then skip and return false.
+			contains()	Used to return true if an element is present in set.
+			iterator()	Used to return an iterator over the element in the set.
+			size()		Used to return count of set
+			remove()	Used to return true if an element is present in set.
+			isEmpty()	Used to return an iterator over the element in the set.
+			clear()		Used to return an iterator over the element in the set.
+
+	LinkedHashSet
+	-------------
+		- A LinkedHashSet is an ordered version of HashSet that maintains a doubly-linked List across all elements.
+		- Maintains insertion order.
+		- Keeping the insertion order in LinkedHashset have additional associated costs, both in terms of spending additional CPU cycles and needing more memory. If you do not need the insertion order maintained, it is recommended to use the lighter-weight HashSet instead.
+
+
 

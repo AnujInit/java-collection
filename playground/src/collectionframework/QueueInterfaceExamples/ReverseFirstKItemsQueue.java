@@ -31,8 +31,24 @@ public class ReverseFirstKItemsQueue {
 
 
     }
+
+    public static int pow(int A, int B, int C) {
+
+        if(A == 0) return 0;
+        if(B == 0) return 1;
+        long half = pow(A, B/2, C);
+
+        if(B%2 == 0)
+            return (int)((half * half)%C);
+
+        return (int)(A * ((half * half)%C)%C);
+    }
     public static void main(String[] args) {
 
+        //20805472
+        System.out.println(pow(71045970, 41535484, 64735492));
+
+        /*
         System.out.println();
         System.out.println("----------------------------------------------");
         System.out.println();
@@ -54,11 +70,6 @@ public class ReverseFirstKItemsQueue {
         System.out.println();
         System.out.println("----------------------------------------------");
         System.out.println();
-
-
-
-
-
-
+        */
     }
 }
